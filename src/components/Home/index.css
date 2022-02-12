@@ -1,0 +1,11 @@
+.home-cards {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 20%;
+  transform: translate(0, -50%);
+  }
+
+  .home-cards .card-img:hover{
+    cursor: pointer;
+  }
