@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import SignUp from './components/SignUp'
-import LoginScreen from './components/Login'
+import LoginScreen from './components/LoginScreen'
 import Header from './components/Header'
 import Home from './components/Home'
 import history from './history'

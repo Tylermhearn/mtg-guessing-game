@@ -1,4 +1,4 @@
-import Login from "./Login"
+import Login from "./LoginButton"
 import SignUpButton from "./SignUpButton"
 
 const Header = () =>
