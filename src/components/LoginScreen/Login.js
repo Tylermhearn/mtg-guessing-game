@@ -12,7 +12,7 @@ const Login = props =>
             id='email'
             value={props.values.email}
             onChange={props.handleEmailInputChange} />
-          {props.submitted && !props.values.email && <span className="text-danger" id='first-name-error'>Please enter an email address</span>}
+          {props.submitted && !props.values.email && <span className="text-danger" id='email-address-error'>Please enter an email address</span>}
         </div>
         <div className="form-group">
           <label className="mt-2">Password</label>
@@ -23,7 +23,7 @@ const Login = props =>
             id='password'
             value={props.values.password}
             onChange={props.handlePasswordInputChange} />
-          {props.submitted && !props.values.password && <span className="text-danger" id='first-name-error'>Please enter a password</span>}
+          {props.submitted && !props.values.password && <span className="text-danger" id='password-error'>Please enter a password</span>}
         </div>
         <div className="form-group">
           <div className="custom-control custom-checkbox">

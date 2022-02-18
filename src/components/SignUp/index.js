@@ -1,32 +1,62 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import useSignUp from "../../Hooks/useSignUp";
+
+import SignUpScreen from "./SignUp";
+
 const SignUp = () => {
+  let navigate = useNavigate()
+  const { call, loading, error } = useSignUp()
+  const [submitted, setSubmittted] = useState(false)
+  const [values, setValues] = useState({
+    emailAddress: '',
+    username: '',
+    password: ''
+  });
+
+  const handleEmailInputChange = event => {
+    event.persist();
+    setValues(values => ({
+      ...values,
+      emailAddress: event.target.value,
+    }));
+  };
+
+  const handlePasswordInputChange = event => {
+    event.persist();
+    setValues(values => ({
+      ...values,
+      password: event.target.value,
+    }));
+  };
+
+  const handleUsernameInputChange = event => {
+    event.persist();
+    setValues(values => ({
+      ...values,
+      username: event.target.value,
+    }));
+  };
+
+  const submit = e => {
+    e.preventDefault();
+    setSubmittted(true)
+    call(values)
+    //call(values).then(() => navigate('/'))
+  }
+
+  if (error) console.log(error)
+
   return (
-    <div className="auth-wrapper">
-      <div className="auth-inner">
-        <form>
-          <h3>Sign Up</h3>
-          <div className="form-group">
-            <label>First name</label>
-            <input type="text" className="form-control" placeholder="First name" />
-          </div>
-          <div className="form-group">
-            <label className="mt-2">Last name</label>
-            <input type="text" className="form-control" placeholder="Last name" />
-          </div>
-          <div className="form-group">
-            <label className="mt-2">Email address</label>
-            <input type="email" className="form-control" placeholder="Enter email" />
-          </div>
-          <div className="form-group">
-            <label className="mt-2">Password</label>
-            <input type="password" className="form-control" placeholder="Enter password" />
-          </div>
-          <button type="submit" className="btn btn-primary btn-block mt-2">Sign Up</button>
-          <p className="forgot-password text-right">
-            Already registered <a href="/sign-in">sign in?</a>
-          </p>
-        </form>
-      </div>
-    </div >
+    <SignUpScreen
+      values={values}
+      submit={submit}
+      submitted={submitted}
+      setSubmittted={setSubmittted}
+      handleEmailInputChange={handleEmailInputChange}
+      handlePasswordInputChange={handlePasswordInputChange}
+      handleUsernameInputChange={handleUsernameInputChange} />
   )
 }
 
